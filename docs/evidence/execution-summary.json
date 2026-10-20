@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-20",
+  "task": "Plan captions for an existing generic silent clip, preview, render, then change only the first caption.",
+  "source": {
+    "file": "source.mp4",
+    "sha256": "0e72e86bf52bdde05759d655059a344220690dfd73fd7e8d547354e8def7e5e0",
+    "origin": "Existing Blender tool sample; public source specification: config/previs/demo.json",
+    "reused_without_modification": true
+  },
+  "agent_execution": {
+    "host": "Codex",
+    "native_subagent_calls": 2,
+    "roles": [
+      "research-script",
+      "visual-director"
+    ],
+    "method": "Fresh native subagent contexts supplied with project role instructions; not automatic named agent-type loading",
+    "actual_spawn_records_checked": true,
+    "child_session_metadata_checked": true,
+    "scope": "Planning only; roles did not watch the video"
+  },
+  "outputs": [
+    {
+      "file": "edited-v1.mp4",
+      "sha256": "cc2a2fe7a08cd08b1d86ec8135d60b09ac46993087990786ad56d39039dbeb67",
+      "status": "completed",
+      "duration": 4.0,
+      "width": 270,
+      "height": 480,
+      "fps": 12.0,
+      "frames": 48,
+      "audio": null,
+      "full_decode_exit_code": 0
+    },
+    {
+      "file": "edited-v2.mp4",
+      "sha256": "7ed5a6b98770d35774ae0bfab2ec6b3639f91f55933a5657e757df80d1ce8c7b",
+      "status": "completed",
+      "duration": 4.0,
+      "width": 270,
+      "height": 480,
+      "fps": 12.0,
+      "frames": 48,
+      "audio": null,
+      "full_decode_exit_code": 0
+    }
+  ],
+  "caption_change": {
+    "v1": "팔 내림에서 시작",
+    "v2": "시작 자세 확인",
+    "other_caption_text_and_times_preserved": true
+  },
+  "edit_impact": {
+    "preserved": [
+      "source motion file"
+    ],
+    "rebuilt": [
+      "captions",
+      "render"
+    ],
+    "new_generation_authorized": false
+  },
+  "preview": {
+    "tool": "HyperFrames Studio",
+    "check_ok": true,
+    "lint_errors": 0,
+    "lint_warnings": 0,
+    "runtime_errors": 0,
+    "browser_playback_reached_seconds": 4,
+    "scope": "Playback/time and caption-state sampling; not a human motion-quality verdict or word alignment"
+  },
+  "capture_methods": {
+    "agent-terminal.png": "Read-only browser terminal showing selected actual Codex events and returned results. Local paths and session IDs omitted. Not a Codex desktop screenshot.",
+    "preview-studio.png": "Actual HyperFrames Studio browser capture at 0.6 seconds",
+    "preview-raised.png": "Actual HyperFrames Studio browser capture at 2.2 seconds",
+    "output-comparison.png": "Actual browser showing three decoded MP4 files at 0.6 seconds with native controls hidden"
+  },
+  "independent_review": {
+    "method": "Separate reviewer opened all four actual PNG files; comparison reopened after removal of browser loading UI",
+    "scope": "Still-image privacy, visible captions, framing and loading UI only",
+    "customer_identifiers_found": false,
+    "remaining_still_image_findings": [],
+    "continuous_motion_observed": false,
+    "audio_listened": false
+  },
+  "new_ai_media_generation_calls": 0,
+  "expert_exercise_approval": "not_claimed",
+  "audio_scope": "All three clips silent; no voice or lip-sync verification"
+}

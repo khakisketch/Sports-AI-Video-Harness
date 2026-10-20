@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check release files or Git-tracked files; never print matched secret values."""
 import json
+import hashlib
 from pathlib import Path
 import re
 import subprocess
@@ -17,6 +18,26 @@ PATTERNS = [
 ]
 PRIVATE_DIRS = {'assets', 'episodes', 'reports', 'deliverables'}
 SKIP = {'.git', 'node_modules', '__pycache__', '.venv'}
+
+
+def reviewed_evidence(root, path):
+    """Allow only explicitly listed, inspected documentation captures/results."""
+    rel = path.relative_to(root).as_posix()
+    if not rel.startswith('docs/evidence/') or path.suffix not in ('.png', '.mp4'):
+        return False
+    try:
+        records = json.loads((root / 'docs/evidence/files.json').read_text())['files']
+        record = records[rel]
+        data = path.read_bytes()
+    except (OSError, ValueError, KeyError, TypeError):
+        return False
+    if record.get('privacy_review') != 'visually_inspected_public_sample':
+        return False
+    if hashlib.sha256(data).hexdigest() != record.get('sha256'):
+        return False
+    if path.suffix == '.png':
+        return record.get('mime') == 'image/png' and data.startswith(b'\x89PNG\r\n\x1a\n')
+    return record.get('mime') == 'video/mp4' and len(data) >= 12 and data[4:8] == b'ftyp'
 
 
 def check(root):
@@ -43,7 +64,8 @@ def check(root):
         try:
             data = path.read_text(encoding='utf-8-sig')
         except UnicodeDecodeError:
-            errors.append({'path': str(rel), 'rule': 'unexpected_binary'})
+            if not reviewed_evidence(root, path):
+                errors.append({'path': str(rel), 'rule': 'unreviewed_or_changed_binary'})
             continue
         for index, pattern in enumerate(PATTERNS):
             if re.search(pattern, data):

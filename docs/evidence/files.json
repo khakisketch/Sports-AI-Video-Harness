@@ -1,0 +1,48 @@
+{
+  "review_date": "2026-10-20",
+  "scope": "Generic project-owned mannequin sample only; no customer materials",
+  "files": {
+    "docs/evidence/agent-terminal.png": {
+      "sha256": "6d9cda886e1ab91627c386ee46464bb316bc287bf8db0c558fdbc0ec7b9767f0",
+      "mime": "image/png",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 204064
+    },
+    "docs/evidence/preview-studio.png": {
+      "sha256": "9419a46443ceb6d146cbb45c443097872dfb7d67543f1fef1794a6fb8a2a656c",
+      "mime": "image/png",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 148814
+    },
+    "docs/evidence/preview-raised.png": {
+      "sha256": "0f8962271c83795075269fd9a139bbfce89747c10d4835d4f836b0d25119c137",
+      "mime": "image/png",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 151535
+    },
+    "docs/evidence/output-comparison.png": {
+      "sha256": "ff25de63b6f8b40374601a3fc20443766de6ff6227956db50a315ef13b5ce811",
+      "mime": "image/png",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 124690
+    },
+    "docs/evidence/source.mp4": {
+      "sha256": "0e72e86bf52bdde05759d655059a344220690dfd73fd7e8d547354e8def7e5e0",
+      "mime": "video/mp4",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 21716
+    },
+    "docs/evidence/edited-v1.mp4": {
+      "sha256": "cc2a2fe7a08cd08b1d86ec8135d60b09ac46993087990786ad56d39039dbeb67",
+      "mime": "video/mp4",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 32859
+    },
+    "docs/evidence/edited-v2.mp4": {
+      "sha256": "7ed5a6b98770d35774ae0bfab2ec6b3639f91f55933a5657e757df80d1ce8c7b",
+      "mime": "video/mp4",
+      "privacy_review": "visually_inspected_public_sample",
+      "size_bytes": 33022
+    }
+  }
+}
