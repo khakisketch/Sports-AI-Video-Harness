@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="925" viewBox="0 0 1200 925" role="img" aria-labelledby="title desc">
+<title id="title">스포츠 영상 제작 시스템 구성</title><desc id="desc">사용자가 제작 감독에게 요청하고 조사·대본과 시각 연출의 도움을 받습니다. 회사 기준과 전문 지침을 공유하며 기획·미리보기, 필요한 AI 제작, 컷 확인·편집을 진행합니다. 독립 검토의 수정 의견은 감독에게 돌아가고 결과와 기록을 함께 전달합니다.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#626262" stroke-width="1.3"/></marker></defs>
+<g font-family="'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif" fill="#191919">
+<rect x="0" y="0" width="1200" height="925" rx="0" fill="white" stroke="none"/>
+<text x="56" y="52" font-size="29" font-weight="650" fill="#191919" text-anchor="start">제작 판단과 도구 실행을 연결하는 구조</text>
+<text x="56" y="80" font-size="18" font-weight="400" fill="#626262" text-anchor="start">역할과 연결 구조를 요약한 도식 · 실제 호출 여부는 작업 기록으로 구분</text>
+<rect x="56" y="108" width="1088" height="70" rx="12" fill="#f6f6f3" stroke="#d5d5d1"/>
+<text x="80" y="137" font-size="24" font-weight="650" fill="#191919" text-anchor="start">사용자</text>
+<text x="80" y="163" font-size="20" font-weight="400" fill="#626262" text-anchor="start">목적과 요청 · 기획 확인 · 수정 · 실행 범위 확인</text>
+<path d="M600 178 V210" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="376" y="218" width="448" height="98" rx="12" fill="#191919" stroke="#191919"/>
+<text x="400" y="256" font-size="28" font-weight="650" fill="white" text-anchor="start">AI 제작 감독</text>
+<text x="400" y="289" font-size="20" font-weight="400" fill="#e7e7e7" text-anchor="start">기획·도구 선택·작업 순서·결과 책임</text>
+<rect x="56" y="218" width="280" height="98" rx="12" fill="white" stroke="#d5d5d1"/>
+<text x="78" y="255" font-size="24" font-weight="650" fill="#191919" text-anchor="start">조사·대본</text>
+<text x="78" y="287" font-size="20" font-weight="400" fill="#626262" text-anchor="start">근거·교육 순서·대사</text>
+<rect x="864" y="218" width="280" height="98" rx="12" fill="white" stroke="#d5d5d1"/>
+<text x="886" y="255" font-size="24" font-weight="650" fill="#191919" text-anchor="start">시각 연출</text>
+<text x="886" y="287" font-size="20" font-weight="400" fill="#626262" text-anchor="start">행동·구도·전환·소리</text>
+<path d="M376 265 H344" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M824 265 H856" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M600 316 V345" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="56" y="353" width="1088" height="70" rx="12" fill="#f6f6f3" stroke="#d5d5d1"/>
+<text x="80" y="382" font-size="22" font-weight="650" fill="#191919" text-anchor="start">함께 사용하는 기준과 자료</text>
+<text x="80" y="409" font-size="20" font-weight="400" fill="#626262" text-anchor="start">회사·시리즈 기준 / 인물·목소리 / 채택 원본 / 전문 제작 지침</text>
+<path d="M600 423 V446" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="56" y="454" width="344" height="138" rx="12" fill="white" stroke="#d5d5d1"/>
+<text x="76" y="492" font-size="24" font-weight="650" fill="#191919" text-anchor="start">01  기획·미리보기</text>
+<text x="76" y="530" font-size="19" font-weight="400" fill="#626262" text-anchor="start">대본·장면 흐름을 먼저 확인</text>
+<text x="76" y="560" font-size="18" font-weight="400" fill="#626262" text-anchor="start">기존 자료 · Blender · HyperFrames</text>
+<rect x="428" y="454" width="344" height="138" rx="12" fill="white" stroke="#d5d5d1"/>
+<text x="448" y="492" font-size="24" font-weight="650" fill="#191919" text-anchor="start">02  필요한 AI 제작</text>
+<text x="448" y="530" font-size="19" font-weight="400" fill="#626262" text-anchor="start">기존 자료로 부족한 부분만 선택</text>
+<text x="448" y="560" font-size="18" font-weight="400" fill="#626262" text-anchor="start">LTX · OpenAI / 전문 플랫폼 선택</text>
+<rect x="800" y="454" width="344" height="138" rx="12" fill="white" stroke="#d5d5d1"/>
+<text x="820" y="492" font-size="24" font-weight="650" fill="#191919" text-anchor="start">03  컷 확인·편집</text>
+<text x="820" y="530" font-size="19" font-weight="400" fill="#626262" text-anchor="start">실제 컷 채택 후 자막·도식·소리</text>
+<text x="820" y="560" font-size="18" font-weight="400" fill="#626262" text-anchor="start">HyperFrames · FFmpeg</text>
+<path d="M400 520 H420" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M772 520 H792" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M972 592 V674 H832" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="376" y="628" width="448" height="98" rx="12" fill="#f6f6f3" stroke="#d5d5d1"/>
+<text x="400" y="667" font-size="26" font-weight="650" fill="#191919" text-anchor="start">독립 검토</text>
+<text x="400" y="700" font-size="20" font-weight="400" fill="#626262" text-anchor="start">실제 결과·기준 대조 → 결함·수정 의견</text>
+<path d="M376 674 H28 V198 H600 V210" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="7 6"/>
+<text x="56" y="650" font-size="20" font-weight="500" fill="#626262" text-anchor="start">필요한 부분만 수정</text>
+<path d="M600 726 V758" fill="none" stroke="#626262" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="56" y="766" width="1088" height="78" rx="12" fill="#191919" stroke="#191919"/>
+<text x="80" y="798" font-size="25" font-weight="650" fill="white" text-anchor="start">결과물과 확인 기록을 함께 전달</text>
+<text x="80" y="828" font-size="20" font-weight="400" fill="#e7e7e7" text-anchor="start">영상 · 편집 소스 · 사용 자산 · 검토와 수정 이력</text>
+<text x="56" y="887" font-size="19" font-weight="400" fill="#626262" text-anchor="start">외부 생성 연결은 계정별 시험이 필요하며, 운동 정확성은 전문가의 실제 확인을 따릅니다.</text>
+</g></svg>
