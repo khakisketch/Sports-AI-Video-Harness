@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "guide": "docs/도구역할-선택기준.md",
+  "project_owns": [
+    "briefs",
+    "scripts",
+    "storyboards",
+    "canonical_assets",
+    "decisions",
+    "review_evidence",
+    "job_history"
+  ],
+  "preferred_production_platform": "official_api_when_cost_effective_and_quality_sufficient",
+  "exclusive_provider": false,
+  "provider_selection": "reuse_accepted_assets_first; compare_official_API_and_existing_platform_total_cost; validate_new_provider_results_before_adoption",
+  "priorities": [
+    "quality_and_consistency",
+    "verifiability",
+    "total_cost_and_rework",
+    "portability_when_otherwise_comparable"
+  ],
+  "image_generation": {
+    "mandatory_provider": null,
+    "reuse_accepted_images_first": true,
+    "preserve_downstream_reference_compatibility": true,
+    "provider_switch_requires_actual_result_review": true,
+    "connected_generator_is_not_assumed_local_or_free": true
+  },
+  "local_tools": {
+    "blender": "motion_and_framing_previsualization",
+    "hyperframes": "existing_asset_preview_with_current_wrapper",
+    "ffmpeg": "editing_compositing_and_technical_checks"
+  },
+  "text_and_graphics": {
+    "default": "editable_layers_over_clean_media",
+    "text_only_revision_regenerates_base_media": false,
+    "caption_timing": "align_to_actual_audio_then_review",
+    "scene_embedded_text": "compare_reference_editing_and_tracked_compositing_when_needed",
+    "catalog": "reusable_blocks_and_components; check_assets_and_side_effects; catalog_and_install_not_enabled_in_current_wrapper",
+    "preserve": [
+      "clean_original",
+      "editable_composition",
+      "font_and_usage_terms",
+      "caption_text_and_timing",
+      "export_settings"
+    ]
+  },
+  "pre_and_postproduction": {
+    "selection": "quality_and_consistency_first; local_when_sufficient; external_when_material_quality_or_workflow_benefit",
+    "cost_stages": [
+      "assets_and_licenses",
+      "media_generation",
+      "voice_and_lipsync",
+      "transcription_and_alignment",
+      "specialized_processing",
+      "render_transfer_storage",
+      "authorized_retries"
+    ],
+    "unknown_cost": "unverified_not_zero",
+    "all_postprocessing_assumed_cheap_or_free": false,
+    "small_fee_preference_is_numeric_spending_authorization": false,
+    "remote_sandbox_is_local": false,
+    "exact_typography_after_media_enhancement_preferred": true,
+    "enhancement_requires_identity_and_motion_review": true,
+    "enhancement_repairs_unverified_exercise_accuracy": false,
+    "automatic_cost_aggregation_implemented": false
+  },
+  "external_capabilities_to_consider": [
+    "character_and_scene_references",
+    "motion_control",
+    "cinematic_camera_and_scene_control",
+    "native_generation_chains",
+    "talking_avatars",
+    "voice_and_lipsync",
+    "specialized_media_edits"
+  ],
+  "avoid_reimplementing": [
+    "local_video_generation_stack",
+    "proprietary_character_training",
+    "platform_motion_transfer_engine",
+    "cinematic_generation_engine",
+    "full_canvas_clone",
+    "proprietary_avatar_engine"
+  ],
+  "web_tool_schema_read_response_and_execution_are_distinct": true,
+  "service_ids_are_not_portable": true,
+  "estimates_can_import_remote_references": true,
+  "automatic_media_generation": false,
+  "production_factory": {
+    "entrypoint": "scripts/factory.py",
+    "roles": "config/production-roles.json",
+    "tools": "config/media-tools.json",
+    "local_preflight_and_packets": true,
+    "external_connector_probes": false,
+    "paid_generation_or_upload": false,
+    "existing_checkers": [
+      "scripts/production.py",
+      "scripts/quality.py",
+      "scripts/hyperframes.py"
+    ]
+  },
+  "current_execution_checker": "production_v2_higgsfield_credits_and_provider_scoped_USD_for_ltx_and_openai_tts",
+  "editorial_assembly": {
+    "operator_role": "agent_as_video_editor_and_producer",
+    "selection": "choose_per_screen_between_existing_media_local_composition_blender_and_new_generation",
+    "all_screens_require_ai_generation": false,
+    "local_editing_scope": [
+      "trim",
+      "sequence",
+      "reframe_from_existing_pixels",
+      "title_cards",
+      "solid_backgrounds",
+      "editable_text_and_graphics",
+      "freeze_and_replay_when_labelled",
+      "audio_mix_when_assets_authorized",
+      "local_export_with_verified_tools"
+    ],
+    "shot_types": [
+      "performance",
+      "title_card",
+      "graphic"
+    ],
+    "production_methods_are_planning_metadata_not_automatic_execution": true,
+    "editing_only_requires_new_generation_approval": false,
+    "external_paid_operations_keep_current_scope": true,
+    "source_guide": "docs/제작계획형식.md"
+  },
+  "editorial_finish": {
+    "guide": "docs/편집완성-운영.md",
+    "voice_timing": {
+      "source_of_truth": "actual_audio_and_observed_action_timing",
+      "record_edit_decision_list": true,
+      "preserve_first_continuous_exercise_cycle": true,
+      "distinguish_voiceover_from_lipsync": true,
+      "asr_is_direct_listening_or_lipsync_evidence": false
+    },
+    "framing": {
+      "diagnose_source_crop_vs_output_reframe": true,
+      "reframing_recovers_pixels_outside_source_frame": false,
+      "review_subject_contact_points_and_platform_ui_safe_area": true,
+      "generative_expansion_requires_separate_scope_and_review": true
+    },
+    "captions": {
+      "default": "natural_korean_editable_layers",
+      "word_by_word_karaoke_or_large_opaque_panels_default": false,
+      "verify_real_vertical_player_and_body_contact_points": true,
+      "unobserved_social_trends_are_not_claimed": true
+    },
+    "tool_routing": {
+      "default": "hyperframes_and_verified_local_media_tools",
+      "higgsfield_video_editing_or_subtitles": "specialized_remote_capability_only_when_local_quality_or_workload_is_insufficient; verify_upload_cost_and_output",
+      "resolve_or_premiere": "consider_if_multitrack_collaboration_tracking_or_color_is_a_repeated_bottleneck; not_installed_on_checked_host_2026-10-16",
+      "new_skill_installation": "no_duplicate_editing_skill; use_existing_hyperframes_media_use_and_available_higgsfield_skills_selectively"
+    },
+    "camera_editing": {
+      "guide": "docs/편집완성-운영.md",
+      "local_skill": ".agents/skills/hyperframes-keyframes/SKILL.md",
+      "use_when": "camera_reframe_or_visual_attention_change_has_a_specific_viewer_information_goal",
+      "quality_gate": [
+        "preserve_action_cycle_and_contact_points",
+        "check_source_edge_and_effective_resolution",
+        "verify_start_end_framing_and_easing_in_playback",
+        "compare_against_unchanged_source"
+      ],
+      "fallback": "use_graphic_or_inset_when_crop_would_hide_body_or_reduce_clarity",
+      "avoid": "decorative_zoom_pan_or_cut_count_without_new_information"
+    }
+  },
+  "official_api": {
+    "guide": "docs/공식API-제작운영.md",
+    "registry": "config/official-media-api.json",
+    "adapter": "scripts/official_media.py",
+    "video_candidate": "ltx",
+    "voice_candidate": "openai_tts",
+    "paid_trial_completed": false,
+    "automatic_provider_fallback": false,
+    "specialized_platform": "higgsfield",
+    "keep_existing_mini_route": true,
+    "voice_selection": "pending; existing service voice IDs are not portable"
+  },
+  "reproducible_production": {
+    "guide": "docs/반복제작-운영.md",
+    "config": "config/scene-pipeline.json",
+    "scene_package": "templates/production/scene-package.json",
+    "new_agents_added": false,
+    "paid_end_to_end_trial_completed": false
+  },
+  "generation_engine": {
+    "guide": "docs/제작엔진-구조.md",
+    "entrypoint": "scripts/generation.py",
+    "capability_registry": "config/generation-capabilities.json",
+    "runtime_profiles": "config/runtime-profiles.json",
+    "metrics": "scripts/production_metrics.py",
+    "generation_location": "external_hosted_model_API",
+    "customer_inference_GPU_required": false,
+    "specialist_platform_default_dependency": false
+  }
+}

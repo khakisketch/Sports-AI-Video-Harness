@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "plan_ref": {"path": null, "sha256": null},
+  "nodes": {},
+  "scenes": [],
+  "cut_reviews": {},
+  "final_render": null,
+  "final_review": {"verdict": "pending", "asset_fingerprint": null, "evidence": null},
+  "note": "Reference the existing production plan. Populate per-component versions, local originals, hashes and dependencies. Reviews start pending. Do not copy fixture approvals."
+}

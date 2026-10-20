@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "guide": "docs/반복제작-운영.md",
+  "entrypoint": "scripts/scene_pipeline.py",
+  "canonical_plan": "existing plan.json and reviews.json remain authoritative; package references exact source version",
+  "scene_package_is_new_approval": false,
+  "new_local_edit_recipe_schema": 2,
+  "legacy_recipe_schema": 1,
+  "post_generation": "save_result_then_cut_review_then_accept_for_edit",
+  "exact_motion": {
+    "preferred": "expert_reviewed_reference_motion_direct_render_when_available",
+    "current_blender_mannequin_is_expert_approved": false,
+    "blender_motion_automatically_transfers_to_video_model": false,
+    "generated_core_demonstration_requires_motion_match_review": true,
+    "generated_image_or_atmosphere_is_motion_evidence": false
+  },
+  "cut_gate": {
+    "inventory": "asset hashes, versions, dependency graph and plan reference only",
+    "edit": "actual per-cut observation records bound to asset and reference versions",
+    "internal_preview": "explicit draft path may show pending cuts; no adoption or generation approval",
+    "delivery": "accepted cuts, required voice and separate final composition review; existing whole-film quality gate still applies",
+    "observation_truth_verified_by_code": false
+  },
+  "sync": {
+    "entrypoint": "scripts/timeline_sync.py",
+    "acoustic_activity": "FFmpeg local silence analysis; not word boundaries",
+    "cue_check": "speech start/end against action onset and per-cue allowable lead",
+    "transcript_and_action_times": "externally aligned or manually observed evidence required for timing acceptance",
+    "asr_or_forced_alignment_engine_installed": false,
+    "direct_listening_automatic": false
+  },
+  "recovery": {
+    "entrypoint": "scripts/official_media.py resume",
+    "operation": "existing_job_GET_only; download_on_completed; persisted_state",
+    "new_paid_POST_on_resume": false,
+    "bounded_read_retry_with_backoff": true,
+    "expired_or_unknown_job": "manual_recovery; no resubmission",
+    "always_on_daemon_installed": false
+  }
+}

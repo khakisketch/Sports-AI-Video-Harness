@@ -1,0 +1,24 @@
+{
+  "episode_id": null,
+  "stage": "PREPRODUCTION",
+  "package_version": "v1",
+  "approved_content_version": null,
+  "approved_motion_version": null,
+  "approved_execution_id": null,
+  "pending_questions": [],
+  "completed_scene_ids": [],
+  "next_action": "제작 브리프 작성",
+  "updated_at": null,
+  "previsualization": {
+    "spec_version": null,
+    "output_directory": null,
+    "technical_pass": null,
+    "expert_review": "PENDING",
+    "approval_id": null
+  },
+  "preproduction": {
+    "active_plan": null,
+    "status": "not_started",
+    "new_generation_authorized": false
+  }
+}

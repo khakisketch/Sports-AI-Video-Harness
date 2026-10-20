@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+/assets/
+/episodes/
+/reports/
+/deliverables/
+/dist/
+.hyperframes/
+.api-state/
+*.blend1
+*.lock.tmp

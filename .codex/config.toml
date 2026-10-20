@@ -1,0 +1,4 @@
+# Model and account settings stay under the operator's control.
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-20",
+  "checked_date_timezone": "+09:00",
+  "price_max_age_days": 7,
+  "automatic_retries": 0,
+  "execution_contract": {
+    "example": "templates/production/plan.json",
+    "example_is_production_approval": false,
+    "request_fields": [
+      "id",
+      "provider",
+      "shot_ids",
+      "purpose",
+      "success_criteria",
+      "params",
+      "quote"
+    ],
+    "quote_command": "scripts/official_media.py estimate --plan PLAN --request-id ID",
+    "quote_is_attached_by_operator_to_matching_request": true,
+    "submit_command": "scripts/official_media.py submit --plan PLAN --request-id ID --execute",
+    "status_command": "scripts/official_media.py status --plan PLAN --request-id ID --download",
+    "approval": "existing reviews.json execution_approval: decision/source/execution_hash/retries=0; budgets.<provider>.currency=USD and max_amount; accept_published_rate_estimate=true only with scope evidence",
+    "quality_and_design_gate": "unchanged production.py generate audit; missing or pending evidence blocks",
+    "example_budget": {
+      "ltx": {
+        "currency": "USD",
+        "max_amount": null
+      },
+      "openai_tts": {
+        "currency": "USD",
+        "max_amount": null
+      }
+    },
+    "resume_command": "scripts/official_media.py resume --plan PLAN --request-id ID --timeout-seconds 300",
+    "resume_submits_new_job": false,
+    "scene_approval": "execution_approval.scene_budgets.<shot_id>.<provider>: currency=USD, max_amount. Full request estimate is conservatively counted for each referenced shot."
+  },
+  "providers": {
+    "ltx": {
+      "credential_env": "LTX_API_KEY",
+      "base_url": "https://api.ltx.io",
+      "documentation": "https://docs.ltx.io/quickstart/",
+      "price_source": "https://docs.ltx.io/pricing",
+      "currency": "USD",
+      "rate_per_second": {
+        "ltx-2-5-fast": {
+          "720": 0.09,
+          "1080": 0.13
+        },
+        "ltx-2-5-pro": {
+          "720": 0.12,
+          "1080": 0.17
+        }
+      },
+      "initial_scope": "fixed_duration_720_or_1080_24_or_25fps_text_or_local_image_to_video",
+      "minimum_poll_seconds": 5,
+      "quality_verified": false
+    },
+    "openai_tts": {
+      "credential_env": "OPENAI_API_KEY",
+      "base_url": "https://api.openai.com",
+      "documentation": "https://developers.openai.com/api/docs/guides/text-to-speech",
+      "price_source": "https://developers.openai.com/api/docs/models/tts-1-hd",
+      "currency": "USD",
+      "rate_per_character": {
+        "tts-1": 1.5e-05,
+        "tts-1-hd": 3e-05
+      },
+      "model_selection": "no_automatic_default; API_reference_lists_these_models; lifecycle_and_account_availability_require_recheck_before_trial",
+      "candidate_voices": [
+        "alloy",
+        "ash",
+        "coral",
+        "echo",
+        "fable",
+        "onyx",
+        "nova",
+        "sage",
+        "shimmer"
+      ],
+      "selected_voice": null,
+      "korean_supported": true,
+      "korean_listening_verified": false,
+      "not_implemented": "gpt-4o-mini-tts_token_billing_requires_a_separate_estimate_policy; do_not_misapply_character_rates"
+    }
+  }
+}

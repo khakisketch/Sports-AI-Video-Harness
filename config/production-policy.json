@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "workflow": "preproduction_first",
+  "current_work": "fresh_project_no_generation_authorized",
+  "preferred_format": "self_demonstration",
+  "customer_min_short_edge": 720,
+  "automatic_paid_retries": 0,
+  "roles": [
+    "story",
+    "direction",
+    "motion",
+    "feasibility"
+  ],
+  "role_execution": "native_host_agents_when_needed; independent_reviewer_for_actual_render",
+  "required_before_generation": [
+    "quality_review",
+    "design_review",
+    "motion_evidence",
+    "current_request_quote",
+    "scoped_user_authorization",
+    "duplicate_job_check"
+  ],
+  "entrypoint": "scripts/production.py",
+  "factory": {
+    "entrypoint": "scripts/factory.py",
+    "guide": "docs/제작팩토리.md",
+    "role_registry": "config/production-roles.json",
+    "tool_registry": "config/media-tools.json",
+    "request_scoped_packets": true,
+    "role_execution": "native_host_agents_when_needed; independent_reviewer_for_actual_render",
+    "local_preflight_only": true,
+    "external_services_called": false,
+    "paid_execution_automatic": false,
+    "verification": "factory_audit_then_stage_specific_existing_checkers"
+  },
+  "direction_design": {
+    "required": true,
+    "guide": "docs/영상연출-설계기준.md",
+    "plan_field": "direction",
+    "layout_only_is_generation_ready": false,
+    "review_requires_observed_visual_development": true,
+    "cut_count_or_effect_count_is_quality": false,
+    "blender_usage": "use_when_spatial_blocking_camera_or_motion_uncertainty_matters; current_runner_has_static_orthographic_camera",
+    "legacy_plans": "preserve_files; create_new_version_before_new_production",
+    "editorial_pass": {
+      "included_in": "direction",
+      "viewer_challenge": "check abrupt_entry_repetitive_holds_conflicting_attention_and_unmotivated_camera_changes",
+      "per_shot_decision": "choose_between_wide_detail_reframe_insert_graphic_or_intentional_static",
+      "movement_quota": false,
+      "preserve_first_exercise_cycle": true,
+      "evidence": "actual_time_preview_and_source_frame_boundaries",
+      "guide": "docs/연출검토.md"
+    }
+  },
+  "scope_note": "로컬 점검과 기록 도구. MCP 호출을 기술적으로 가로막는 방화벽은 아님. 에이전트는 생성 직전 점검을 수행하고 현재 사용자 지시·기존 승인 범위를 적용한다.",
+  "external_skills_lock": "config/external-skills.lock.json",
+  "quality_review": {
+    "required": true,
+    "rubric": "config/quality-rubric.json",
+    "guide": "docs/생성전-품질검토.md",
+    "skill": ".agents/skills/preproduction-review/SKILL.md",
+    "checker": "scripts/quality.py",
+    "minimum_rating": 3,
+    "all_applicable_checks_required": true,
+    "average_cannot_override_defects": true,
+    "required_profile_for_generation": "generation",
+    "technical_pass_is_not_semantic_pass": true
+  },
+  "tool_routing": "config/tool-routing.json",
+  "interaction_guide": "docs/대화형-제작운영.md",
+  "studio_agents": "config/studio-agents.json",
+  "local_edit_worker": {
+    "entrypoint": "scripts/media_worker.py",
+    "scope": "local_existing_assets_only",
+    "paid_media_generation": false,
+    "automatic_retries": 0
+  },
+  "official_api": {
+    "guide": "docs/공식API-제작운영.md",
+    "adapter": "scripts/official_media.py",
+    "provider_budget_units": {
+      "ltx": "USD",
+      "openai_tts": "USD",
+      "higgsfield": "credits"
+    },
+    "published_rate_estimate_requires_explicit_scope": true,
+    "model_and_price_recheck_before_paid_trial": true,
+    "automatic_fallback": false,
+    "setup_is_paid_authorization": false,
+    "scene_budget_required": true
+  },
+  "scene_pipeline": {
+    "config": "config/scene-pipeline.json",
+    "guide": "docs/반복제작-운영.md",
+    "cut_review_before_production_edit": true,
+    "new_recipe_schema": 2,
+    "legacy_recipes_preserved": true,
+    "reference_motion_expert_review_required": true
+  },
+  "generation_engine": {
+    "interface": "scripts/generation.py",
+    "registry": "config/generation-capabilities.json",
+    "unimplemented_task_kinds": "fail_closed",
+    "automatic_paid_fallback": false,
+    "existing_plan_review_job_records_remain_authoritative": true,
+    "cloud_worker_implemented": false
+  }
+}

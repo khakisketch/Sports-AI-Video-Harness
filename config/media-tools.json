@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "policy": "capability_based_local_first_external_when_materially_better",
+  "local_tools": [
+    {
+      "id": "python",
+      "label": "Python",
+      "binary": "python3",
+      "purpose": [
+        "workflow_orchestration",
+        "metadata_checks",
+        "reports"
+      ],
+      "required_for": [
+        "all"
+      ],
+      "verification": "scripts/factory.py audit",
+      "cost": "local_runtime; no service credits"
+    },
+    {
+      "id": "blender",
+      "label": "Blender",
+      "binary": "blender",
+      "fallback": "/Applications/Blender.app/Contents/MacOS/Blender",
+      "purpose": [
+        "spatial_blocking",
+        "motion_previsualization",
+        "camera_study"
+      ],
+      "required_for": [
+        "spatial_previsualization"
+      ],
+      "verification": "version probe only; render only when requested",
+      "cost": "local_runtime"
+    },
+    {
+      "id": "ffmpeg",
+      "label": "FFmpeg",
+      "binary": "ffmpeg",
+      "purpose": [
+        "trim",
+        "sequence",
+        "mix",
+        "transcode",
+        "technical_export"
+      ],
+      "required_for": [
+        "edit",
+        "delivery"
+      ],
+      "verification": "version probe; ffprobe metadata and full decode per output",
+      "cost": "local_runtime",
+      "resolver": "scripts/media_runtime.py",
+      "preferred_build": "homebrew/ffmpeg-full",
+      "fallback": "/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg"
+    },
+    {
+      "id": "ffprobe",
+      "label": "ffprobe",
+      "binary": "ffprobe",
+      "purpose": [
+        "media_metadata",
+        "duration_frame_rate_streams"
+      ],
+      "required_for": [
+        "review",
+        "delivery"
+      ],
+      "verification": "version probe and actual target inspection",
+      "cost": "local_runtime",
+      "resolver": "scripts/media_runtime.py",
+      "preferred_build": "homebrew/ffmpeg-full",
+      "fallback": "/opt/homebrew/opt/ffmpeg-full/bin/ffprobe"
+    },
+    {
+      "id": "hyperframes",
+      "label": "HyperFrames local preview",
+      "runtime_manifest": "tools/hyperframes/node_modules/hyperframes/package.json",
+      "purpose": [
+        "browser_composition",
+        "editable_titles_captions_graphics",
+        "local_preview"
+      ],
+      "required_for": [
+        "composition_preview"
+      ],
+      "adapter": "scripts/hyperframes.py",
+      "verification": "python3 scripts/hyperframes.py check --json; actual preview separately",
+      "cost": "local runtime; cloud/export modes excluded unless separately authorized"
+    }
+  ],
+  "external_services": [
+    {
+      "id": "higgsfield",
+      "label": "Higgsfield",
+      "kind": "assistant_mcp_connector",
+      "assistant_skill": "app-6a3293e129088191abf0875820e839da:higgsfield",
+      "tool_namespace": "mcp__codex_apps__",
+      "purpose": [
+        "image_video_generation",
+        "motion_control",
+        "elements",
+        "specialized_editing"
+      ],
+      "read_only_preflight_tools": [
+        "mcp__codex_apps__higgsfield_list_workspaces",
+        "mcp__codex_apps__higgsfield_list_projects",
+        "mcp__codex_apps__higgsfield_models_list",
+        "mcp__codex_apps__higgsfield_models_recommend",
+        "mcp__codex_apps__higgsfield_models_search",
+        "mcp__codex_apps__higgsfield_models_get",
+        "mcp__codex_apps__higgsfield_estimate_image_cost",
+        "mcp__codex_apps__higgsfield_estimate_video_cost",
+        "mcp__codex_apps__higgsfield_list_voices"
+      ],
+      "preflight": "query currently exposed model, reference inputs, estimate, job status and service constraints",
+      "factory_access": "not called by local orchestrator; assistant uses connector when the requested stage needs it",
+      "quote": "per job; unknown until current quote",
+      "execution": "requires matching user scope and generation gate"
+    },
+    {
+      "id": "heygen",
+      "label": "HeyGen",
+      "kind": "assistant_mcp_connector",
+      "assistant_skill": "heygen:heygen-workflows",
+      "tool_namespace": "mcp__codex_apps__",
+      "purpose": [
+        "talking_avatar",
+        "voice",
+        "lip_sync"
+      ],
+      "read_only_preflight_tools": [
+        "mcp__codex_apps__heygen_get_current_user",
+        "mcp__codex_apps__heygen_list_avatar_groups",
+        "mcp__codex_apps__heygen_list_avatar_looks",
+        "mcp__codex_apps__heygen_list_avatars",
+        "mcp__codex_apps__heygen_list_voices",
+        "mcp__codex_apps__heygen_list_templates"
+      ],
+      "preflight": "query current avatar/voice compatibility, cost and upload scope",
+      "factory_access": "not called by local orchestrator; assistant uses connector when the requested stage needs it",
+      "quote": "per job; unknown until current quote",
+      "execution": "requires matching user scope and generation gate"
+    },
+    {
+      "id": "ltx",
+      "label": "LTX 공식 영상 API",
+      "kind": "official_http_api",
+      "entrypoint": "scripts/official_media.py",
+      "purpose": [
+        "text_to_video",
+        "image_to_video"
+      ],
+      "credential_env": "LTX_API_KEY",
+      "read_only_preflight_tools": [],
+      "preflight": "offline doctor and estimate; account access and quality trial not verified",
+      "factory_access": "route only; generation requires explicit adapter submit and existing production gate",
+      "quote": "published USD rate estimate; provider scoped budget; taxes and FX excluded",
+      "execution": "no automatic retry or provider fallback"
+    },
+    {
+      "id": "openai_tts",
+      "label": "OpenAI 공식 음성 API",
+      "kind": "official_http_api",
+      "entrypoint": "scripts/official_media.py",
+      "purpose": [
+        "korean_voiceover"
+      ],
+      "credential_env": "OPENAI_API_KEY",
+      "read_only_preflight_tools": [],
+      "preflight": "offline doctor and estimate; account access and quality trial not verified",
+      "factory_access": "route only; generation requires explicit adapter submit and existing production gate",
+      "quote": "published USD rate estimate; provider scoped budget; taxes and FX excluded",
+      "execution": "no automatic retry or provider fallback"
+    }
+  ],
+  "non_goals": [
+    "local_ai_video_model",
+    "automatic_paid_retry",
+    "automatic_upload",
+    "automatic_publish",
+    "credential_storage",
+    "remote_render_without_scope"
+  ],
+  "local_edit_worker": {
+    "entrypoint": "scripts/media_worker.py",
+    "skill": "ffmpeg-skill",
+    "tools": [
+      "cut",
+      "fit",
+      "caption",
+      "loudness"
+    ],
+    "external_calls": false
+  },
+  "generation_task_interface": {
+    "entrypoint": "scripts/generation.py",
+    "registry": "config/generation-capabilities.json",
+    "cost_metrics": "scripts/production_metrics.py",
+    "runtime_profiles": "config/runtime-profiles.json"
+  }
+}

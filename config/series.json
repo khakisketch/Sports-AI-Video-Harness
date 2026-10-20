@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "series_name": "Sports AI Video Harness",
+  "language": "ko-KR",
+  "instructor": {
+    "approved": false
+  },
+  "style": {
+    "approved": false
+  },
+  "sports_reviewer": null,
+  "paid_retries_authorized": 0,
+  "production": {
+    "primary_service": "capability_based_external_API",
+    "model_execution": "external_hosted_API",
+    "customer_local_inference_GPU_required": false,
+    "tool_routing": "config/tool-routing.json",
+    "preproduction": {
+      "active_plan": null,
+      "active_preview": null,
+      "active_quality_review": null,
+      "current_generation_authorized": false,
+      "current_draft_status": "새 프로젝트. 기준 자산·제작안·음성·실행 범위를 먼저 정합니다."
+    }
+  }
+}

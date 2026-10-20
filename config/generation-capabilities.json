@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "guide": "docs/제작엔진-구조.md",
+  "task_interface": "scripts/generation.py",
+  "kinds": [
+    "VideoGeneration",
+    "SpeechSynthesis",
+    "ImageGeneration",
+    "LipSync",
+    "VoiceCloning"
+  ],
+  "selection": "explicit_route_and_model; no automatic paid fallback",
+  "routes": {
+    "ltx-official-v2": {
+      "kind": "VideoGeneration",
+      "provider": "lightricks",
+      "adapter": "official_media",
+      "legacy_provider": "ltx",
+      "implementation": "implemented_not_live_verified",
+      "operations": [
+        "text-to-video",
+        "image-to-video"
+      ],
+      "models": [
+        "ltx-2-5-fast",
+        "ltx-2-5-pro"
+      ],
+      "credential_env": "LTX_API_KEY",
+      "quality_trial": "pending"
+    },
+    "openai-speech": {
+      "kind": "SpeechSynthesis",
+      "provider": "openai",
+      "adapter": "official_media",
+      "legacy_provider": "openai_tts",
+      "implementation": "implemented_not_live_verified",
+      "models": [
+        "tts-1",
+        "tts-1-hd"
+      ],
+      "credential_env": "OPENAI_API_KEY",
+      "quality_trial": "pending",
+      "selected_voice": null
+    }
+  },
+  "optional_specialists": [
+    {
+      "provider": "higgsfield",
+      "access": "existing_assistant_connector",
+      "default_dependency": false
+    },
+    {
+      "provider": "heygen",
+      "access": "existing_assistant_connector",
+      "default_dependency": false
+    }
+  ],
+  "candidates_not_connected": [
+    {
+      "model_family": "Wan",
+      "kind": "VideoGeneration",
+      "providers_to_evaluate": [
+        "fal.ai",
+        "Replicate",
+        "RunPod"
+      ],
+      "support_price_and_terms": "unverified"
+    },
+    {
+      "kind": "ImageGeneration",
+      "provider": null,
+      "support_price_and_terms": "unverified"
+    },
+    {
+      "kind": "LipSync",
+      "provider": null,
+      "support_price_and_terms": "unverified"
+    },
+    {
+      "kind": "VoiceCloning",
+      "provider": null,
+      "support_price_and_terms": "unverified; consent_and_usage_scope_required"
+    }
+  ]
+}

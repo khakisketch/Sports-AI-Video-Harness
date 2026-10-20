@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "execution_model": "native_host_director_with_scoped_subagents_and_local_media_worker",
+  "model_policy": "inherit_operator_selected_model; no automatic model downgrade or new API provider",
+  "worker": "scripts/media_worker.py",
+  "canonical_records": [
+    "plan.json",
+    "reviews.json",
+    "jobs.json"
+  ],
+  "review_isolation": "fresh_context_without_director_verdict_or_prior_reviews",
+  "agents": [
+    {
+      "id": "creative-director",
+      "label": "총괄 제작 감독",
+      "description": "작업자와 대화하며 기획·연출·도구 선택과 제작·수정·납품을 총괄한다.",
+      "source": "agents/creative-director.md",
+      "skills": [
+        "sports-video-consultation"
+      ],
+      "stages": [
+        "all"
+      ],
+      "claude_tools": null
+    },
+    {
+      "id": "research-script",
+      "label": "조사·대본",
+      "description": "근거 조사, 교육 순서와 대본을 작성해 감독에게 반환한다. 제작 실행과 승인 변경은 하지 않는다.",
+      "source": "agents/research-script.md",
+      "skills": [
+        "sports-video-consultation"
+      ],
+      "stages": [
+        "preproduction",
+        "asset"
+      ],
+      "claude_tools": "Read, Glob, Grep, WebSearch, WebFetch"
+    },
+    {
+      "id": "visual-director",
+      "label": "시각 연출",
+      "description": "장면의 목적·행동·구도·전환·소리·자막을 설계한다. 영상 생성과 원본 수정은 하지 않는다.",
+      "source": "agents/visual-director.md",
+      "skills": [
+        "director-visual-language",
+        "storyboard-shot-design",
+        "motion-brief-writer",
+        "reference-to-motion"
+      ],
+      "stages": [
+        "preproduction",
+        "asset",
+        "edit"
+      ],
+      "claude_tools": "Read, Glob, Grep"
+    },
+    {
+      "id": "creative-reviewer",
+      "label": "독립 크리에이티브 검수",
+      "description": "제작자 판단과 분리해 실제 결과·시간대별 증거를 읽고 결함을 반환한다. 제작·유료 호출·승인 변경은 하지 않는다.",
+      "source": "agents/creative-reviewer.md",
+      "skills": [
+        "preproduction-review",
+        "continuity-editing-axis-match"
+      ],
+      "stages": [
+        "review",
+        "delivery"
+      ],
+      "claude_tools": "Read, Glob, Grep"
+    }
+  ],
+  "model_policy_scope": "reasoning models for director/subagents; media API selection follows generation-capabilities.json"
+}

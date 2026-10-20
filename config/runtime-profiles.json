@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "guide": "docs/제작엔진-구조.md",
+  "generation_location": "external_hosted_model_API",
+  "customer_requires_local_inference_GPU": false,
+  "development_equipment_is_delivery_requirement": false,
+  "current_profile": "producer-workstation",
+  "profiles": {
+    "producer-workstation": {
+      "status": "local_editing_verified; paid_API_end_to_end_pending",
+      "director_host": "Codex; Claude_Code_definitions_prepared_runtime_not_verified",
+      "artifact_store": "project_filesystem",
+      "edit_worker": "local_process",
+      "model_weights_downloaded_by_this_setup": false,
+      "required_for_editing": [
+        "Python",
+        "FFmpeg",
+        "Node_for_HyperFrames",
+        "Korean_fonts"
+      ],
+      "Blender": "optional_when_3D_work_is_needed"
+    },
+    "customer-cloud-worker": {
+      "status": "architecture_only_not_implemented_or_deployed",
+      "director_host": "chat_or_agent_frontend_to_be_connected",
+      "artifact_store": "persistent_shared_or_object_storage_to_be_integrated",
+      "edit_worker": "cloud_job_worker_to_be_packaged_and_verified",
+      "required_verification": [
+        "portable_paths",
+        "font_packaging",
+        "worker_runtime",
+        "storage_and_job_claims",
+        "secrets",
+        "tenant_isolation",
+        "restart_and_download_recovery"
+      ],
+      "local_generation_GPU": "not_required"
+    }
+  },
+  "research_only": [
+    "DGX Spark local model experiments",
+    "dedicated development machine benchmarks"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": null,
+  "kind": "VideoGeneration",
+  "route": null,
+  "model": null,
+  "shot_ids": [],
+  "purpose": null,
+  "success_criteria": [],
+  "input": {
+    "prompt": null,
+    "duration_seconds": null,
+    "width": null,
+    "height": null,
+    "fps": null,
+    "generate_audio": false,
+    "reference_asset_id": null
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "sports-lecture-local-preview",
+  "private": true,
+  "description": "Project-local HyperFrames runtime for previews made from existing assets only",
+  "engines": { "node": ">=22" },
+  "dependencies": { "hyperframes": "0.8.162", "gsap": "3.14.2" }
+}

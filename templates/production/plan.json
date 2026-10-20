@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "episode_id": null,
+  "version": null,
+  "brief": {
+    "topic": null,
+    "viewer_question": null,
+    "takeaway": null,
+    "format": "self_demonstration",
+    "target_seconds": 30,
+    "aspect_ratio": "9:16",
+    "customer_preview": true
+  },
+  "cast": [],
+  "assets": [],
+  "direction": {
+    "editorial_intent": null,
+    "opening_visual": null,
+    "closing_payoff": null,
+    "visual_style": null,
+    "sound_strategy": null,
+    "preview_level": "layout_only",
+    "beats": []
+  },
+  "shots": [],
+  "transitions": [],
+  "motion_cycles": [],
+  "execution": {
+    "requests": [],
+    "retries": 0
+  }
+}

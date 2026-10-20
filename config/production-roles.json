@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "execution_model": "native_host_director_with_scoped_subagents_and_local_media_worker",
+  "role_source": "specialist_views_mapped_to_native_host_agents",
+  "roles": [
+    {
+      "id": "producer",
+      "label": "프로듀서·작업 관리자",
+      "stages": [
+        "all"
+      ],
+      "skills": [
+        "sports-video-consultation"
+      ],
+      "guides": [
+        "docs/대화형-제작운영.md",
+        "docs/제작운영.md"
+      ],
+      "inputs": [
+        "user_request",
+        "config/series.json",
+        "episode_status"
+      ],
+      "outputs": [
+        "scope",
+        "current_stage",
+        "assumptions",
+        "next_handoff"
+      ],
+      "prompt": "요청자가 지금 원하는 결과와 완료 기준을 확정하고 기존 승인·비용 범위를 읽는다. 이미 결정된 질문을 되묻지 않고, 요청 밖 단계는 시작하지 않는다."
+    },
+    {
+      "id": "content_research",
+      "label": "콘텐츠·근거 검토자",
+      "stages": [
+        "preproduction",
+        "generation",
+        "review",
+        "delivery"
+      ],
+      "skills": [
+        "sports-video-consultation",
+        "preproduction-review"
+      ],
+      "guides": [
+        "docs/생성전-품질검토.md",
+        "docs/연출검토.md"
+      ],
+      "inputs": [
+        "brief",
+        "script",
+        "referenced_sources",
+        "observed_video"
+      ],
+      "outputs": [
+        "claim_source_map",
+        "uncertainties",
+        "content_findings"
+      ],
+      "prompt": "건강·운동 주장을 근거와 연결하고 일반 안내, 개인 처방, 전문가 판단을 분리한다. 정지 이미지나 기술 로그로 동작 정확성을 통과시키지 않는다."
+    },
+    {
+      "id": "script_story",
+      "label": "대본·스토리 설계자",
+      "stages": [
+        "preproduction"
+      ],
+      "skills": [
+        "storyboard-shot-design"
+      ],
+      "guides": [
+        "docs/영상연출-설계기준.md",
+        "docs/제작계획형식.md"
+      ],
+      "inputs": [
+        "viewer_question",
+        "takeaway",
+        "source_map",
+        "duration"
+      ],
+      "outputs": [
+        "script",
+        "beats",
+        "viewer_promise_and_payoff"
+      ],
+      "prompt": "시청자 질문에서 시작해 화면으로 확인되는 행동·정보와 마지막 회수를 설계한다. 짧은 영상이라도 의미 단위로 흐름을 만들고 1초 단위 표를 강제하지 않는다."
+    },
+    {
+      "id": "visual_director_editor",
+      "label": "연출자·영상 편집자",
+      "stages": [
+        "preproduction",
+        "asset",
+        "edit"
+      ],
+      "skills": [
+        "director-visual-language",
+        "storyboard-shot-design",
+        "continuity-editing-axis-match",
+        "hyperframes",
+        "hyperframes-keyframes",
+        "motion-brief-writer",
+        "reference-to-motion",
+        "ffmpeg-skill"
+      ],
+      "guides": [
+        "docs/영상연출-설계기준.md",
+        "docs/편집완성-운영.md",
+        "docs/반복제작-운영.md"
+      ],
+      "inputs": [
+        "script",
+        "existing_media",
+        "shot_purpose",
+        "platform_format"
+      ],
+      "outputs": [
+        "shot_plan",
+        "transition_reason",
+        "edit_decisions",
+        "preview"
+      ],
+      "prompt": "각 컷의 정보·감정 목적을 정하고 기존 영상·도식·제목·카메라 리프레임·신규 생성을 장면별로 선택한다. 전환은 행동·시선·형태·소리 연결을 보존하고 장식용 움직임을 피한다."
+    },
+    {
+      "id": "motion_staging",
+      "label": "동작·공간 구성 검토자",
+      "stages": [
+        "preproduction",
+        "asset",
+        "generation",
+        "review"
+      ],
+      "skills": [
+        "scene-blocking-and-staging",
+        "world-asset-identity-lock",
+        "reference-driven-video-prompting"
+      ],
+      "guides": [
+        "docs/연출검토.md",
+        "docs/프리비주얼.md",
+        "docs/캐릭터자산관리.md"
+      ],
+      "inputs": [
+        "exercise_reference",
+        "start_end_pose",
+        "support_points",
+        "camera_plan"
+      ],
+      "outputs": [
+        "motion_evidence",
+        "blocking_notes",
+        "identity_constraints",
+        "expert_questions"
+      ],
+      "prompt": "시범의 준비·수행·복귀와 지지점·좌우·균형·프레임 가장자리를 대조한다. 운동 정확성 미확인은 pending으로 남기고 AI 시안을 전문가 승인으로 표현하지 않는다."
+    },
+    {
+      "id": "asset_tool_planner",
+      "label": "자산·도구 라우터",
+      "stages": [
+        "asset",
+        "preproduction",
+        "generation",
+        "edit",
+        "environment"
+      ],
+      "skills": [
+        "media-use",
+        "world-asset-identity-lock"
+      ],
+      "guides": [
+        "docs/도구역할-선택기준.md",
+        "docs/외부스킬-운영.md",
+        "docs/캐릭터자산관리.md",
+        "docs/공식API-제작운영.md",
+        "docs/반복제작-운영.md"
+      ],
+      "inputs": [
+        "existing_assets",
+        "quality_requirements",
+        "tool_registry",
+        "current_quotes"
+      ],
+      "outputs": [
+        "reuse_or_create_decisions",
+        "tool_routes",
+        "cost_and_permission_gaps"
+      ],
+      "prompt": "승인 원본과 검증된 경로를 먼저 재사용하고 장면별 품질·일관성·수정 가능성·총비용으로 도구를 고른다. 웹 기능 노출, 연결, 실행 권한, 견적을 서로 구분한다."
+    },
+    {
+      "id": "execution_preflight",
+      "label": "실행 사전 점검자",
+      "stages": [
+        "generation"
+      ],
+      "skills": [
+        "sports-video-consultation",
+        "reference-driven-video-prompting"
+      ],
+      "guides": [
+        "docs/Higgsfield-운영기준.md",
+        "docs/제작운영.md",
+        "config/production-policy.json",
+        "docs/공식API-제작운영.md",
+        "docs/반복제작-운영.md"
+      ],
+      "inputs": [
+        "plan.json",
+        "reviews.json",
+        "current_quote",
+        "job_history",
+        "user_scope"
+      ],
+      "outputs": [
+        "generation_gate",
+        "duplicate_job_result",
+        "scoped_execution_packet"
+      ],
+      "prompt": "현재 승인된 버전·자산·도구·비용 단위·상한·제출 횟수를 맞춰본다. 견적 미확인, 중복 작업 미확인 또는 범위 불일치면 실행을 막고 사용자 승인을 추정하지 않는다."
+    },
+    {
+      "id": "skeptical_viewer",
+      "label": "회의적 시청자·연속성 검토자",
+      "stages": [
+        "preproduction",
+        "edit",
+        "review"
+      ],
+      "skills": [
+        "preproduction-review",
+        "continuity-editing-axis-match"
+      ],
+      "guides": [
+        "docs/생성전-품질검토.md",
+        "docs/연출검토.md"
+      ],
+      "inputs": [
+        "real_time_preview",
+        "source_boundaries",
+        "script_and_audio"
+      ],
+      "outputs": [
+        "confusion_points",
+        "pacing_findings",
+        "transition_findings"
+      ],
+      "prompt": "실제 재생 시간에서 화면이 왜 바뀌는지, 행동이 이해되는지, 대기·반복·도약이 있는지 반례를 찾는다. 오디오가 없으면 낭독 예상만 확인했다고 기록한다."
+    },
+    {
+      "id": "technical_qa",
+      "label": "기술 QA",
+      "stages": [
+        "edit",
+        "review",
+        "delivery"
+      ],
+      "skills": [
+        "hyperframes-cli"
+      ],
+      "guides": [
+        "docs/납품검수운영.md",
+        "docs/편집완성-운영.md",
+        "docs/반복제작-운영.md"
+      ],
+      "inputs": [
+        "rendered_file",
+        "export_spec",
+        "captions",
+        "audio"
+      ],
+      "outputs": [
+        "codec_duration_frame_count",
+        "decode_report",
+        "technical_defects"
+      ],
+      "prompt": "해상도·fps·프레임 수·코덱·길이·전체 디코딩과 자막·오디오 트랙을 검사한다. 파일 검사 통과를 자연스러움·운동 정확성·고객 승인으로 바꾸지 않는다."
+    },
+    {
+      "id": "expert_and_delivery",
+      "label": "전문가 확인·납품 담당",
+      "stages": [
+        "review",
+        "delivery"
+      ],
+      "skills": [
+        "sports-video-consultation",
+        "preproduction-review"
+      ],
+      "guides": [
+        "docs/납품검수운영.md",
+        "templates/delivery/inspection-items.csv",
+        "templates/delivery/result-report-outline.md"
+      ],
+      "inputs": [
+        "actual_render",
+        "source_and_script",
+        "qa_results",
+        "job_records"
+      ],
+      "outputs": [
+        "expert_pending_or_signed_review",
+        "inspection_dossier",
+        "result_report",
+        "manifest"
+      ],
+      "prompt": "AI 검수·기술 검사·전문가 의견·인수자 검토를 분리하고 실제 파일에서 결과보고서와 검수조서를 만든다. 미실행·미확인을 통과로 바꾸지 않으며 발송·게시를 요청 없이 하지 않는다."
+    },
+    {
+      "id": "factory_engineer",
+      "label": "제작 시스템·환경 관리자",
+      "stages": [
+        "environment"
+      ],
+      "skills": [
+        "sports-video-consultation"
+      ],
+      "guides": [
+        "docs/환경점검.md",
+        "docs/외부스킬-운영.md",
+        "config/tool-routing.json",
+        "docs/공식API-제작운영.md",
+        "docs/반복제작-운영.md"
+      ],
+      "inputs": [
+        "tool_registry",
+        "skill_lock",
+        "project_configs",
+        "test_results"
+      ],
+      "outputs": [
+        "readiness_report",
+        "missing_capabilities",
+        "safe_next_actions"
+      ],
+      "prompt": "로컬에서 재현 가능한 검사와 외부 연결·계정·유료 실행을 구분하고, 확인된 병목만 자동화한다. 새로운 스킬·서비스·외부 실행을 임의 설치하지 않는다."
+    }
+  ],
+  "agent_registry": "config/studio-agents.json",
+  "role_groups": {
+    "creative-director": [
+      "producer",
+      "asset_tool_planner",
+      "execution_preflight",
+      "expert_and_delivery",
+      "factory_engineer"
+    ],
+    "research-script": [
+      "content_research",
+      "script_story"
+    ],
+    "visual-director": [
+      "visual_director_editor",
+      "motion_staging"
+    ],
+    "creative-reviewer": [
+      "skeptical_viewer",
+      "technical_qa"
+    ]
+  }
+}

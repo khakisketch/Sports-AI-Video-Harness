@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280, height=720" />
+  <title>EP001 · 기존 자산으로 연출 검토</title>
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/MotionPathPlugin.min.js"></script>
+  <style>
+    @font-face { font-family: "Preview Korean"; src: url("assets/korean-bold.otf") format("opentype"); font-weight: 700; font-display: block; }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { width: 1280px; height: 720px; overflow: hidden; background: #f5f2eb; }
+    #root { position: relative; width: 100%; height: 100%; padding: 28px 32px; overflow: hidden; font-family: "Preview Korean", sans-serif; font-weight: 700; color: #203d38; }
+    header { height: 76px; display: flex; justify-content: space-between; align-items: start; }
+    .eyebrow { font-size: 24px; line-height: 1.3; color: #52635d; }
+    h1 { font-size: 38px; line-height: 1.4; letter-spacing: -1px; }
+    .status { font-size: 24px; color: #3a6d62; padding-top: 18px; }
+    .stage { display: grid; grid-template-columns: 246px 1fr; gap: 28px; height: 436px; }
+    aside { display: grid; grid-template-rows: 34px 278px 28px 96px; }
+    .reference-label { font-size: 22px; line-height: 1.4; }
+    #instructor-front { width: 100%; height: 278px; object-fit: contain; }
+    #instructor-ready { width: 100%; height: 96px; object-fit: contain; }
+    .motion-column { min-width: 0; display: grid; grid-template-rows: 34px 368px 34px; }
+    .source-label { font-size: 22px; color: #52635d; line-height: 1.4; }
+    .video-window { width: 100%; height: 368px; overflow: hidden; background: #42474b; border-radius: 8px; display: flex; justify-content: center; }
+    #bridge-video { width: 84%; height: 100%; object-fit: cover; object-position: center; }
+    .motion-note { font-size: 22px; line-height: 1.5; color: #52635d; }
+    .guidance { margin-top: 20px; position: relative; height: 104px; border-top: 2px solid #3a6d62; }
+    .phase-copy { position: absolute; inset: 12px 0 0; display: grid; grid-template-columns: 246px 1fr; gap: 28px; }
+    .phase-label { font-size: 30px; line-height: 1.5; color: #3a6d62; }
+    .screen-copy { font-size: 30px; line-height: 1.5; }
+    footer { position: absolute; inset: auto 32px 22px; font-size: 22px; line-height: 1.4; color: #52635d; }
+    .progress-track { position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: #f5f2eb; }
+    #progress { width: 100%; height: 6px; background: #3a6d62; transform-origin: left center; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="ep001-preview" data-start="0" data-duration="@@DURATION@@" data-width="1280" data-height="720">
+    <header>
+      <div><p class="eyebrow">EP001 · 제작 전 검토</p><h1>@@TITLE@@</h1></div>
+      <p class="status">기존 자산 재사용 · 무음</p>
+    </header>
+    <main class="stage">
+      <aside>
+        <p class="reference-label">가상 강사 v2 · 외형 참고</p>
+        <img id="instructor-front" src="assets/instructor-full-body.png" alt="가상 강사 v2 전신 기준 이미지" />
+        <p class="reference-label">준비 자세 참고</p>
+        <img id="instructor-ready" src="assets/instructor-bridge-ready.png" alt="골반을 내려놓은 준비 자세 참고" />
+      </aside>
+      <section class="motion-column">
+        <p class="source-label">Blender · 원본 270×480 / 12fps · 동선 검토용</p>
+        <div class="video-window">
+          <video id="bridge-video" class="clip" src="assets/motion.mp4" muted playsinline preload="auto" data-start="0" data-duration="@@DURATION@@" data-media-start="0" data-track-index="0"></video>
+        </div>
+        <p class="motion-note">준비 → 상승 → 유지 → 하강 → 복귀 · 한 주기 연속 재생</p>
+      </section>
+    </main>
+    <section class="guidance">@@PHASES@@</section>
+    <footer>연출·타이밍 검토용 · 운동 정확성·전문가 승인 대기</footer>
+    <div class="progress-track"><div id="progress"></div></div>
+  </div>
+  <script>
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo("#progress", { scaleX: 0 }, { scaleX: 1, duration: @@DURATION@@, ease: "none" }, 0);
+    window.__timelines["ep001-preview"] = timeline;
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "스포츠 강의 생성 전 연출 품질",
+  "minimum_rating": 3,
+  "rating_anchors": {
+    "1": "시청자가 행동·역할·의도를 오해하거나 핵심 내용이 보이지 않는다.",
+    "2": "의도는 추측할 수 있으나 추가 설명이나 시청자의 추론에 의존한다.",
+    "3": "처음 보는 시청자가 핵심 정보와 행동을 이해할 근거가 화면에 있다.",
+    "4": "3을 충족하고 구도·타이밍·연기가 전달 효과를 명확히 강화한다."
+  },
+  "maximum_sequence_gap_seconds": 0.5,
+  "criteria": [
+    {
+      "id": "viewer_value",
+      "unit": "episode",
+      "evidence": "reading",
+      "question": "누구의 어떤 질문에 답하며 보고 나서 무엇을 이해하는가?"
+    },
+    {
+      "id": "progression",
+      "unit": "episode",
+      "evidence": "visual",
+      "question": "각 화면이 정보를 더하며 마지막에 처음의 질문을 회수하는가?"
+    },
+    {
+      "id": "rhythm",
+      "unit": "episode",
+      "evidence": "temporal",
+      "question": "행동·정보·감정의 변화에 리듬이 있는가? 불필요한 대기·같은 설명의 반복이 없는가? 운동을 이해할 시간은 확보했는가?"
+    },
+    {
+      "id": "visual_development",
+      "unit": "episode",
+      "evidence": "temporal",
+      "question": "말과 자막을 넘어 행동·비교·발견·도식 전개가 보이며 처음의 질문이 화면으로 회수되는가? 같은 사진의 확대·문구 교체만을 연출의 근거로 삼지 않았는가?"
+    },
+    {
+      "id": "visual_job",
+      "unit": "shot",
+      "evidence": "visual",
+      "question": "이 화면을 빼면 무엇을 잃는가? 실제 화면이 그 일을 하는가?"
+    },
+    {
+      "id": "action_clarity",
+      "unit": "shot",
+      "evidence": "visual",
+      "question": "자막을 가려도 누가 무엇을 하는지 알 수 있는가?"
+    },
+    {
+      "id": "staging_performance",
+      "unit": "shot",
+      "evidence": "temporal",
+      "question": "인물·소품·시선·제스처 또는 설명 도식의 변화가 목적을 전달하는가? 피사체와 카메라의 움직임이 분리 설계되고 실제 시안에서 읽히는가? 정적인 유지에는 볼 이유가 있는가?"
+    },
+    {
+      "id": "framing_focus",
+      "unit": "shot",
+      "evidence": "visual",
+      "question": "핵심 신체·지지점·표정이 보이고 안내가 행동을 가리지 않는가?"
+    },
+    {
+      "id": "identity_role",
+      "unit": "shot",
+      "evidence": "visual",
+      "question": "인물·의상·역할·화면 방향을 혼동하지 않는가?"
+    },
+    {
+      "id": "instruction_alignment",
+      "unit": "shot",
+      "evidence": "visual",
+      "question": "대사·화면 안내가 말하는 행동이 그 시점에 보이는가? 무음의 목적은 분명한가?"
+    },
+    {
+      "id": "cut_motivation",
+      "unit": "transition",
+      "evidence": "visual",
+      "question": "왜 이 순간 자르는가? 새로운 정보가 컷의 비용보다 큰가?"
+    },
+    {
+      "id": "continuity",
+      "unit": "transition",
+      "evidence": "visual",
+      "question": "전환 직전과 직후의 몸·시선·방향·행동 단계가 연결되는가?"
+    },
+    {
+      "id": "full_cycle",
+      "unit": "cycle",
+      "evidence": "temporal",
+      "question": "준비→수행→복귀를 실제 시간 흐름으로 이해할 수 있는가?"
+    },
+    {
+      "id": "support_visibility",
+      "unit": "cycle",
+      "evidence": "visual",
+      "question": "각 단계에서 중요한 지지점과 관절이 계속 읽히는가?"
+    }
+  ],
+  "decision_rule": "모든 적용 항목이 근거 있는 3점 이상이어야 통과. 평균으로 결함을 상쇄하지 않는다. 미확인·중대 결함·재검수 미완료는 보류.",
+  "scope_note": "프로젝트의 편집·연출 기준이다. 보편적 영화 규격·운동 전문가 승인·흥행 예측 모델이 아니다."
+}

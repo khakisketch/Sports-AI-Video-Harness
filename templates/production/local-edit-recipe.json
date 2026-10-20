@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "mode": "local_edit",
+  "purpose": "Agent fills local source paths and actual SHA-256 before execution; never overwrite source media",
+  "inputs": {
+    "source": {
+      "path": "REPLACE_WITH_EXISTING_LOCAL_VIDEO",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+    },
+    "captions": {
+      "path": "REPLACE_WITH_EDITABLE_KOREAN_ASS",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+    }
+  },
+  "steps": [
+    {
+      "id": "subtitled",
+      "tool": "caption",
+      "input": "source",
+      "output": "subtitled.mp4",
+      "ass": "captions",
+      "params": {
+        "quality": 20
+      }
+    },
+    {
+      "id": "mix",
+      "tool": "loudness",
+      "input": "subtitled",
+      "output": "result.mp4",
+      "params": {
+        "lufs": -16,
+        "tp": -1.5
+      }
+    }
+  ],
+  "scene_package": null,
+  "scene_ids": [],
+  "scene_profile": "production"
+}

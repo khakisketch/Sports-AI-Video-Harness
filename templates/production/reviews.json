@@ -1,0 +1,45 @@
+{
+  "quality_review": null,
+  "roles": {
+    "story": {
+      "verdict": "pending",
+      "design_hash": null,
+      "notes": "",
+      "evidence": []
+    },
+    "direction": {
+      "verdict": "pending",
+      "design_hash": null,
+      "notes": "",
+      "evidence": []
+    },
+    "motion": {
+      "verdict": "pending",
+      "design_hash": null,
+      "notes": "",
+      "evidence": []
+    },
+    "feasibility": {
+      "verdict": "pending",
+      "design_hash": null,
+      "execution_hash": null,
+      "notes": "",
+      "evidence": []
+    }
+  },
+  "design_approval": {
+    "decision": "pending",
+    "design_hash": null,
+    "source": null
+  },
+  "execution_approval": {
+    "decision": "pending",
+    "execution_hash": null,
+    "source": null,
+    "max_credits": null,
+    "retries": 0,
+    "budgets": {},
+    "accept_published_rate_estimate": false,
+    "scene_budgets": {}
+  }
+}
